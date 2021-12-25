@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: solution-service
+spec:
+    selector:
+        app: solution-service
+    ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: solution-service
+  name: solution-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solution-service
+  template:
+    metadata:
+      labels:
+        app: solution-service
+    spec:
+      containers:
+      - image: solution-service
+        name: solution-service

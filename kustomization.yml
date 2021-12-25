@@ -1,0 +1,4 @@
+commonLabels:
+  app: solution-service
+resources:
+  - ./solution-service.yaml
